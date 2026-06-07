@@ -106,8 +106,8 @@ h3 {
 h1 {
   max-width: 48rem;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2.7rem, 8vw, 6.8rem);
-  letter-spacing: -0.055em;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  letter-spacing: -0.025em;
 }
 
 .hero p:not(.eyebrow) {
