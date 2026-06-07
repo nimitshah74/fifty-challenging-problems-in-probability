@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A visual one-stop interface for the Fifty Challenging Problems in Probability notebooks."
+    />
+    <title>Fifty Challenging Problems in Probability</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"],
+          ],
+          displayMath: [
+            ["$$", "$$"],
+            ["\\[", "\\]"],
+          ],
+        },
+        options: {
+          skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+        },
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script defer src="assets/problems.js"></script>
+    <script defer src="assets/app.js"></script>
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="topbar" aria-label="Repository links">
+        <a href="https://github.com/nimitshah74/fifty-challenging-problems-in-probability">GitHub Repo</a>
+        <a href="#problem-list">Problem List</a>
+      </nav>
+      <div class="hero__content">
+        <p class="eyebrow">Interactive notebook guide</p>
+        <h1>Fifty Challenging Problems in Probability</h1>
+        <p>
+          Browse every numbered problem from the repository, open the problem statement, then reveal the written
+          solution or the original notebook code when you need it.
+        </p>
+        <div class="hero__stats" aria-label="Repository coverage">
+          <span><strong id="available-count">46</strong> notebooks available</span>
+          <span><strong>50</strong> numbered problems</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar" id="problem-list">
+        <div class="sidebar__header">
+          <div>
+            <p class="eyebrow">Select a problem</p>
+            <h2>Numbered Index</h2>
+          </div>
+          <button class="ghost-button" id="clear-search" type="button">Clear</button>
+        </div>
+        <label class="search">
+          <span>Search titles and statements</span>
+          <input id="problem-search" type="search" placeholder="Try “birthday”, “duel”, or “coin”" />
+        </label>
+        <div class="problem-grid" id="problem-grid" aria-label="Problem numbers"></div>
+        <p class="coverage-note" id="coverage-note"></p>
+      </aside>
+
+      <section class="detail" aria-live="polite">
+        <div class="empty-state" id="empty-state">
+          <p class="eyebrow">Ready when you are</p>
+          <h2>Choose a number to open a problem.</h2>
+          <p>The problem statement appears first. Solution and code buttons unlock the two answer views.</p>
+        </div>
+
+        <article class="problem-card hidden" id="problem-card">
+          <div class="problem-card__header">
+            <div>
+              <p class="eyebrow" id="problem-kicker">Problem</p>
+              <h2 id="problem-title"></h2>
+              <p class="notebook-link" id="notebook-link"></p>
+            </div>
+            <a class="ghost-button" id="open-notebook" href="#" target="_blank" rel="noreferrer">Open Notebook</a>
+          </div>
+
+          <div class="problem-actions" id="problem-actions" role="tablist" aria-label="Problem views">
+            <button class="action-button active" id="show-problem" type="button" role="tab">Problem</button>
+            <button class="action-button" id="show-solution" type="button" role="tab">Solution</button>
+            <button class="action-button" id="show-code" type="button" role="tab">Code Solution</button>
+          </div>
+
+          <div class="panel prose" id="problem-panel"></div>
+          <div class="panel prose hidden" id="solution-panel"></div>
+          <div class="panel hidden" id="code-panel"></div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
