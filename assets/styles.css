@@ -394,11 +394,90 @@ h1 {
 }
 
 .code-cell__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
   padding: 0.7rem 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(255, 255, 255, 0.05);
   color: #bed5e0;
   font-size: 0.84rem;
+}
+
+.code-runner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(40, 83, 107, 0.16);
+  border-radius: 1.1rem;
+  background: #f4fbff;
+}
+
+.code-runner__title {
+  margin: 0 0 0.25rem;
+  color: var(--blue);
+  font-weight: 850;
+}
+
+.code-runner__note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.code-runner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.runtime-status {
+  grid-column: 1 / -1;
+  padding: 0.7rem 0.85rem;
+  border-radius: 0.85rem;
+  background: white;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.runtime-status[data-state="running"] {
+  color: var(--blue);
+}
+
+.runtime-status[data-state="success"] {
+  color: #21633a;
+}
+
+.runtime-status[data-state="error"] {
+  color: #9c2d22;
+}
+
+.runner-button {
+  padding: 0.55rem 0.8rem;
+  border: 1px solid rgba(190, 213, 224, 0.5);
+  border-radius: 999px;
+  background: #dff1f8;
+  color: #12384b;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.runner-button:hover:not(:disabled) {
+  background: #c8e8f3;
+}
+
+.runner-button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.ghost-runner {
+  background: white;
 }
 
 pre {
@@ -412,6 +491,62 @@ pre {
 
 .copy-all {
   margin-bottom: 1rem;
+}
+
+.code-runner .copy-all {
+  margin-bottom: 0;
+}
+
+.cell-output {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #101f29;
+}
+
+.cell-output:empty {
+  display: none;
+}
+
+.cell-output__status {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #bed5e0;
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.cell-output__status.success {
+  color: #a9e5bd;
+}
+
+.cell-output__status.error {
+  color: #ffb4ab;
+}
+
+.cell-output__status.running {
+  color: #f6d68f;
+}
+
+.cell-output__stream {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0b151c;
+  color: #e6f1f5;
+}
+
+.cell-output__stream.warning {
+  color: #f6d68f;
+}
+
+.cell-output__stream.error {
+  color: #ffcac3;
+}
+
+.cell-output img {
+  display: block;
+  max-width: min(100%, 44rem);
+  height: auto;
+  margin: 1rem;
+  border-radius: 0.7rem;
+  background: white;
 }
 
 .notice {
@@ -452,5 +587,13 @@ pre {
 
   .problem-card__header {
     display: grid;
+  }
+
+  .code-runner {
+    grid-template-columns: 1fr;
+  }
+
+  .code-runner__actions {
+    justify-content: flex-start;
   }
 }

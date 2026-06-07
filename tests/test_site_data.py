@@ -75,10 +75,23 @@ class SiteDataTests(unittest.TestCase):
             'id="problem-grid"',
             'id="show-solution"',
             'id="show-code"',
+            "pyodide/v0.29.4/full/pyodide.js",
             'assets/problems.js',
             'assets/app.js',
         ]:
             self.assertIn(expected, index)
+
+    def test_app_contains_runnable_code_hooks(self) -> None:
+        app = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")
+        for expected in [
+            "window.loadPyodide",
+            "Run Cell",
+            "Run All",
+            "Reset Runtime",
+            "_run_user_code",
+            "pyodide.loadPackage",
+        ]:
+            self.assertIn(expected, app)
 
 
 if __name__ == "__main__":
